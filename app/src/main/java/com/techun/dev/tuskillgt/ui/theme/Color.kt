@@ -2,10 +2,10 @@ package com.techun.dev.tuskillgt.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val DarkBlue40 = Color(0xFF003764)      // El más saturado/oscuro
+val OceanBlue40 = Color(0xFF0084AD)     // Saturado intermedio
+val LightBlueGrey40 = Color(0xFF4A626C)  // Variante grisácea armada para armonizar
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val SkyBlue80 = Color(0xFF72D0EB)       // Pálido / Claro
+val Mint80 = Color(0xFF8AE2D1)          // El más pálido de todos
+val SkyBlueGrey80 = Color(0xFFBCE3EE)   // Variante grisácea pálida armada para armoniza
