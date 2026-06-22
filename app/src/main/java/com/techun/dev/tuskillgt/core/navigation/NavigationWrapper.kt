@@ -10,7 +10,7 @@ import com.techun.dev.tuskillgt.core.utils.back
 import com.techun.dev.tuskillgt.ui.AboutScreen
 import com.techun.dev.tuskillgt.ui.CompetenciesScreen
 import com.techun.dev.tuskillgt.ui.ContactScreen
-import com.techun.dev.tuskillgt.ui.HomeScreen
+import com.techun.dev.tuskillgt.ui.home.HomeScreen
 
 @Composable
 fun NavigationWrapper(

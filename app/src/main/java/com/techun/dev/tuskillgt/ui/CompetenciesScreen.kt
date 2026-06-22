@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.techun.dev.tuskillgt.core.composables.TUSkillGTText
 
 @Composable
 fun CompetenciesScreen() {
@@ -18,7 +19,7 @@ fun CompetenciesScreen() {
                 .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = "CompetenciesScreen")
+            TUSkillGTText(text = "CompetenciesScreen")
         }
     }
 }

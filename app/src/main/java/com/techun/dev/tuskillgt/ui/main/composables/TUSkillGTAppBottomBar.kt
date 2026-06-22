@@ -8,6 +8,7 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.NavKey
+import com.techun.dev.tuskillgt.core.composables.TUSkillGTText
 import com.techun.dev.tuskillgt.core.navigation.bottomNavItems
 
 @Composable
@@ -37,7 +38,7 @@ fun TUSkillGTAppBottomBar(
                         contentDescription = item.title
                     )
                 },
-                label = { Text(text = item.title) }
+                label = { TUSkillGTText(text = item.title) }
             )
         }
     }
