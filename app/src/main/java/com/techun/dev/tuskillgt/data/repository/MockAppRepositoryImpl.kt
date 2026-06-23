@@ -1,6 +1,8 @@
 package com.techun.dev.tuskillgt.data.repository
 
-import com.techun.dev.tuskillgt.R
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Phone
 import com.techun.dev.tuskillgt.core.utils.chef_hat
 import com.techun.dev.tuskillgt.core.utils.computer_sound
 import com.techun.dev.tuskillgt.core.utils.health_and_beauty
@@ -8,6 +10,7 @@ import com.techun.dev.tuskillgt.core.utils.imagesmode
 import com.techun.dev.tuskillgt.core.utils.precision_manufacturing
 import com.techun.dev.tuskillgt.domain.model.AboutUsData
 import com.techun.dev.tuskillgt.domain.model.CompetenciesData
+import com.techun.dev.tuskillgt.domain.model.ContactData
 import com.techun.dev.tuskillgt.domain.model.HomeData
 import com.techun.dev.tuskillgt.domain.repository.MockAppRepository
 
@@ -52,5 +55,20 @@ class MockAppRepositoryImpl : MockAppRepository {
             title = "Diseño Gráfico",
             description = "Comunicación visual, diseño digital y creatividad aplicada."
         )
+    )
+
+    override suspend fun loadContactInfo() = ContactData(
+        title = "Participación y Contacto",
+        requiredTile = "Requisitos para participar",
+        requireDescription = "* Ser guatemalteco(a) entre 17 y 25 años.\n* Estar inscrito en una institución educativa o técnica.\n* Tener interés en alguna de las competencias.",
+        processTitle = "Proceso de inscripción",
+        processDescription = "1. Completa el formulario en línea.\n2. Participa en las pruebas de selección.\n3. Prepárate con expertos y entrena para competir.",
+        importantDateTitle = "Fechas importantes",
+        importantDateDescription = "* Convocatoria: Julio\n* Pruebas de selección: Agosto\n* Entrenamientos: Septiembre-Octubre",
+        contactTitle = "Contacto",
+        emailIcon = Icons.Filled.Email,
+        email = "contacto@worldskills.gt",
+        phoneIcon = Icons.Filled.Phone,
+        phoneNumber = "+502 1234 5678"
     )
 }

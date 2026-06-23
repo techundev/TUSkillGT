@@ -103,9 +103,9 @@ private fun AboutContent(
         )
         Image(
             modifier = Modifier
-                .size(200.dp)
+                .fillMaxWidth()
                 .padding(horizontal = 44.dp),
-            painter = painterResource(R.drawable.wskills_guatemala),
+            painter = painterResource(R.drawable.worldskills),
             contentDescription = null,
             contentScale = ContentScale.Fit
         )

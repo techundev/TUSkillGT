@@ -60,8 +60,8 @@ private fun HomeContent(data: HomeData) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            modifier = Modifier.size(200.dp),
-            painter = painterResource(R.drawable.wskills_guatemala),
+            modifier = Modifier.fillMaxWidth(),
+            painter = painterResource(R.drawable.worldskills),
             contentDescription = null,
             contentScale = ContentScale.Fit
         )

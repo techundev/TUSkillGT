@@ -3,7 +3,6 @@ package com.techun.dev.tuskillgt.ui.competencies
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -46,7 +45,7 @@ fun CompetenciesScreen(viewModel: CompetenciesViewModel = koinViewModel()) {
 }
 
 @Composable
-fun CompetenciesContent(data: List<CompetenciesData>) {
+private fun CompetenciesContent(data: List<CompetenciesData>) {
     LazyColumn(
         //contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
