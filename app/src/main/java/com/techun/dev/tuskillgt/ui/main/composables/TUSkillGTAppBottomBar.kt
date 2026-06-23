@@ -38,7 +38,7 @@ fun TUSkillGTAppBottomBar(
                         contentDescription = item.title
                     )
                 },
-                label = { TUSkillGTText(text = item.title) }
+                label = { TUSkillGTText(text = item.title, maxLines = 1) }
             )
         }
     }

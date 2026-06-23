@@ -1,8 +1,8 @@
 package com.techun.dev.tuskillgt.domain.usecase
 
-import com.techun.dev.tuskillgt.domain.model.DataHome
-import com.techun.dev.tuskillgt.domain.repository.HomeRepository
+import com.techun.dev.tuskillgt.domain.model.HomeData
+import com.techun.dev.tuskillgt.domain.repository.MockAppRepository
 
-class HomeDataUseCase(private val repository: HomeRepository) {
-    suspend operator fun invoke(): DataHome = repository.loadHomeInfo()
+class HomeDataUseCase(private val repository: MockAppRepository) {
+    suspend operator fun invoke(): HomeData = repository.loadHomeInfo()
 }

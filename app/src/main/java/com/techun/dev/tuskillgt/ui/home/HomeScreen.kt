@@ -24,9 +24,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.techun.dev.tuskillgt.R
 import com.techun.dev.tuskillgt.core.composables.TUSkillGTButton
 import com.techun.dev.tuskillgt.core.composables.TUSkillGTText
-import com.techun.dev.tuskillgt.domain.model.DataHome
-import com.techun.dev.tuskillgt.ui.home.composables.HomeError
-import com.techun.dev.tuskillgt.ui.home.composables.HomeLoading
+import com.techun.dev.tuskillgt.domain.model.HomeData
+import com.techun.dev.tuskillgt.core.composables.TUSkillGTErrorScreen
+import com.techun.dev.tuskillgt.core.composables.TUSkillGTLoadingScreen
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -41,8 +41,8 @@ fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
             contentAlignment = Alignment.Center
         ) {
             when (val state = uiState) {
-                is HomeUiState.Loading -> HomeLoading()
-                is HomeUiState.Error -> HomeError(message = state.message)
+                is HomeUiState.Loading -> TUSkillGTLoadingScreen()
+                is HomeUiState.Error -> TUSkillGTErrorScreen(message = state.message)
                 is HomeUiState.Success -> HomeContent(data = state.data)
             }
         }
@@ -51,7 +51,7 @@ fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
 
 
 @Composable
-private fun HomeContent(data: DataHome) {
+private fun HomeContent(data: HomeData) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -69,14 +69,16 @@ private fun HomeContent(data: DataHome) {
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
             text = data.title,
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.primary
         )
         Spacer(modifier = Modifier.height(30.dp))
         TUSkillGTText(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
             text = data.description,
-            style = MaterialTheme.typography.bodyLarge
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.primary
         )
         Spacer(modifier = Modifier.height(30.dp))
         TUSkillGTButton(onclick = {}, text = "Ingresar", shape = MaterialTheme.shapes.small)

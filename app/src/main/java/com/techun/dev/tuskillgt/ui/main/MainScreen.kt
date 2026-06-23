@@ -12,7 +12,6 @@ import com.techun.dev.tuskillgt.core.utils.backTo
 import com.techun.dev.tuskillgt.core.utils.navigateTo
 import com.techun.dev.tuskillgt.ui.main.composables.TUSkillGTAppBottomBar
 
-@Preview(showBackground = true)
 @Composable
 fun MainScreen() {
     val backStack = rememberNavBackStack(NavRoutes.Home)
@@ -21,7 +20,8 @@ fun MainScreen() {
     Scaffold(
         bottomBar = {
             TUSkillGTAppBottomBar(
-                currentRout = currentRoute, onItemSeleted = { route ->
+                currentRout = currentRoute,
+                onItemSeleted = { route ->
                     if (currentRoute != route) {
                         if (route in backStack) {
                             backStack.backTo(route)
