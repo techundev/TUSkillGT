@@ -20,6 +20,12 @@ val Typography = Typography(
         fontSize = 42.sp,
         lineHeight = 48.sp,
         letterSpacing = 0.sp
+    ), displaySmall = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp,
+        lineHeight = 25.sp,
+        letterSpacing = 0.sp
     )/* Other default text styles to override
     ,
     labelSmall = TextStyle(

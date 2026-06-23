@@ -52,7 +52,7 @@ fun AboutScreen(viewModel: AboutViewModel = koinViewModel()) {
 }
 
 @Composable
-fun AboutContent(
+private fun AboutContent(
     data: AboutUsData
 ) {
     Column(

@@ -1,6 +1,13 @@
 package com.techun.dev.tuskillgt.data.repository
 
+import com.techun.dev.tuskillgt.R
+import com.techun.dev.tuskillgt.core.utils.chef_hat
+import com.techun.dev.tuskillgt.core.utils.computer_sound
+import com.techun.dev.tuskillgt.core.utils.health_and_beauty
+import com.techun.dev.tuskillgt.core.utils.imagesmode
+import com.techun.dev.tuskillgt.core.utils.precision_manufacturing
 import com.techun.dev.tuskillgt.domain.model.AboutUsData
+import com.techun.dev.tuskillgt.domain.model.CompetenciesData
 import com.techun.dev.tuskillgt.domain.model.HomeData
 import com.techun.dev.tuskillgt.domain.repository.MockAppRepository
 
@@ -17,5 +24,33 @@ class MockAppRepositoryImpl : MockAppRepository {
         localTitle = "WorldSkills Guatemala",
         localDescription = "WorldSkills Guatemala forma parte de este movimiento global, brindando oportunidades a jóvenes guatemaltecos para desarrollar su talento, competir internacionalmente y transformar su futuro profesional.",
         slogan = "\"Las habilidades construyen el futuro. El talento transforma naciones.\""
+    )
+
+    override suspend fun loadCompetenciesInfo() = listOf(
+        CompetenciesData(
+            icon = computer_sound,
+            title = "Tecnología de la Información",
+            description = "Desarrollo de software, redes y soporte técnico."
+        ),
+        CompetenciesData(
+            icon = precision_manufacturing,
+            title = "Mecatrónica",
+            description = "Integración de sistemas mecánicos, electrónicos y de control."
+        ),
+        CompetenciesData(
+            icon = health_and_beauty,
+            title = "Estética y Belleza",
+            description = "Técnicas de maquillaje, cuidado de la piel y estilismo."
+        ),
+        CompetenciesData(
+            icon = chef_hat,
+            title = "Cocina y Gastronomía",
+            description = "Preparación culinaria, presentación y creatividad gastronómica."
+        ),
+        CompetenciesData(
+            icon = imagesmode,
+            title = "Diseño Gráfico",
+            description = "Comunicación visual, diseño digital y creatividad aplicada."
+        )
     )
 }

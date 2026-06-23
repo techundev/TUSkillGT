@@ -8,7 +8,7 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.techun.dev.tuskillgt.core.utils.back
 import com.techun.dev.tuskillgt.ui.about.AboutScreen
-import com.techun.dev.tuskillgt.ui.CompetenciesScreen
+import com.techun.dev.tuskillgt.ui.competencies.CompetenciesScreen
 import com.techun.dev.tuskillgt.ui.ContactScreen
 import com.techun.dev.tuskillgt.ui.home.HomeScreen
 
