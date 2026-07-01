@@ -1,10 +1,39 @@
 package com.techun.dev.tuskillgt.data.repository
 
-import com.techun.dev.tuskillgt.domain.model.User
+import com.techun.dev.tuskillgt.data.local.dao.UserDao
+import com.techun.dev.tuskillgt.data.local.entity.UserEntity
+import com.techun.dev.tuskillgt.data.local.preferences.AppPreferencesDataSource
+import com.techun.dev.tuskillgt.domain.model.LoginResult
 import com.techun.dev.tuskillgt.domain.repository.RoomRepository
+import kotlinx.coroutines.flow.Flow
 
-class RoomRepositoryImpl : RoomRepository {
-    override suspend fun doLogin(user: User): Boolean {
-        return true
+
+class RoomRepositoryImpl(
+    private val dao: UserDao, private val preferencesDataSource: AppPreferencesDataSource
+) : RoomRepository {
+    override suspend fun insertUser(user: String, password: String) {
+        dao.insertUser(UserEntity(user = user, password = password))
+    }
+
+    override val isFirstLaunch: Flow<Boolean> = preferencesDataSource.isFirstLaunch
+
+    override suspend fun setFirstLaunchCompleted() {
+        preferencesDataSource.setFirstLaunchCompleted()
+    }
+
+    override suspend fun doLogin(
+        user: String,
+        password: String
+    ): LoginResult {
+        return try {
+            val roomResponse = dao.doLogin(user, password)
+            if (roomResponse != null) {
+                LoginResult.Success
+            } else {
+                LoginResult.InvalidCredentials
+            }
+        } catch (e: Exception) {
+            LoginResult.Error(e.message ?: "Error desconocido al iniciar sesión")
+        }
     }
 }
