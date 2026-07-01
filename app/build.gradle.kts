@@ -64,6 +64,14 @@ dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.kotlinx.serialization.json)
 
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+
+    // Datastore
+    implementation(libs.androidx.datastore.preferences)
+
     //testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
