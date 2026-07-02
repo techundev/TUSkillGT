@@ -15,6 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,8 +31,17 @@ import com.techun.dev.tuskillgt.domain.model.ContactData
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun ContactScreen(viewModel: ContactViewModel = koinViewModel()) {
+fun ContactScreen(
+    viewModel: ContactViewModel = koinViewModel(), onLogoutSuccess: () -> Unit
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(uiState) {
+        if (uiState is ContactUiState.LogoutSuccess) {
+            onLogoutSuccess()
+        }
+
+    }
 
     Scaffold { innerPadding ->
         Box(
@@ -43,22 +53,25 @@ fun ContactScreen(viewModel: ContactViewModel = koinViewModel()) {
             when (val state = uiState) {
                 is ContactUiState.Loading -> TUSkillGTLoadingScreen()
                 is ContactUiState.Error -> TUSkillGTErrorScreen(state.message)
-                is ContactUiState.Success -> ContactContent(state.data)
+                is ContactUiState.Success -> ContactContent(
+                    state.data, onLogout = viewModel::logout
+                )
+
+                else -> Unit
             }
         }
     }
 }
 
 @Composable
-fun ContactContent(data: ContactData) {
+fun ContactContent(data: ContactData, onLogout: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TUSkillGTText(
-            modifier = Modifier
-                .padding(horizontal = 16.dp),
+            modifier = Modifier.padding(horizontal = 16.dp),
             text = data.title,
             style = MaterialTheme.typography.titleMedium,
         )
@@ -175,8 +188,8 @@ fun ContactContent(data: ContactData) {
         Spacer(modifier = Modifier.height(10.dp))
         TUSkillGTButton(
             modifier = Modifier.padding(horizontal = 44.dp),
-            onclick = {},
-            text = "Volver al inicio",
+            onclick = onLogout,
+            text = "Cerrar sesión",
             shape = MaterialTheme.shapes.small
         )
     }

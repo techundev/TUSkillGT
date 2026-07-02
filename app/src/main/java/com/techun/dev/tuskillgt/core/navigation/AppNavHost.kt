@@ -30,7 +30,12 @@ fun AppNavHost(
                 )
             }
             entry<NavRoutes.Main> {
-                MainScreen()
+                MainScreen(
+                    onLogout = {
+                        rootBackStack.clear()
+                        rootBackStack.add(NavRoutes.Login)
+                    }
+                )
             }
         }
     )

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.techun.dev.tuskillgt.domain.model.ContactData
 import com.techun.dev.tuskillgt.domain.usecase.ContactDataUseCase
+import com.techun.dev.tuskillgt.domain.usecase.LogoutUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,9 +14,13 @@ sealed class ContactUiState {
     object Loading : ContactUiState()
     data class Success(val data: ContactData) : ContactUiState()
     data class Error(val message: String) : ContactUiState()
+    object LogoutSuccess : ContactUiState()
 }
 
-class ContactViewModel(private val contactDataUseCase: ContactDataUseCase) : ViewModel() {
+class ContactViewModel(
+    private val contactDataUseCase: ContactDataUseCase,
+    private val logoutUseCase: LogoutUseCase
+) : ViewModel() {
     private val _uiState = MutableStateFlow<ContactUiState>(ContactUiState.Loading)
     val uiState: StateFlow<ContactUiState> = _uiState.asStateFlow()
 
@@ -27,5 +32,10 @@ class ContactViewModel(private val contactDataUseCase: ContactDataUseCase) : Vie
         runCatching { contactDataUseCase() }
             .onSuccess { _uiState.value = ContactUiState.Success(it) }
             .onFailure { _uiState.value = ContactUiState.Error(it.message ?: "Error") }
+    }
+
+    fun logout() = viewModelScope.launch {
+        logoutUseCase()
+        _uiState.value = ContactUiState.LogoutSuccess
     }
 }

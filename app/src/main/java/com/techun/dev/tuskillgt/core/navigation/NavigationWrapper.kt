@@ -15,6 +15,7 @@ import com.techun.dev.tuskillgt.ui.home.HomeScreen
 @Composable
 fun NavigationWrapper(
     backStack: NavBackStack<NavKey>,
+    onLogout: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     NavDisplay(
@@ -34,7 +35,9 @@ fun NavigationWrapper(
                 CompetenciesScreen()
             }
             entry<NavRoutes.Contact> {
-                ContactScreen()
+                ContactScreen(
+                    onLogoutSuccess = onLogout
+                )
             }
         }
     )

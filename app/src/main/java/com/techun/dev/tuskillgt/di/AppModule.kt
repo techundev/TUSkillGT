@@ -8,12 +8,13 @@ import com.techun.dev.tuskillgt.data.repository.AuthRepositoryImpl
 import com.techun.dev.tuskillgt.domain.repository.MockAppRepository
 import com.techun.dev.tuskillgt.domain.repository.AuthRepository
 import com.techun.dev.tuskillgt.domain.usecase.AboutUsUseCase
-import com.techun.dev.tuskillgt.domain.usecase.AuthUseCase
+import com.techun.dev.tuskillgt.domain.usecase.LoginUseCase
 import com.techun.dev.tuskillgt.domain.usecase.CompetenciesDataUseCase
 import com.techun.dev.tuskillgt.domain.usecase.ContactDataUseCase
 import com.techun.dev.tuskillgt.domain.usecase.GetSplashDestinationUseCase
 import com.techun.dev.tuskillgt.domain.usecase.HomeDataUseCase
 import com.techun.dev.tuskillgt.domain.usecase.InitializeDefaultUserUseCase
+import com.techun.dev.tuskillgt.domain.usecase.LogoutUseCase
 import com.techun.dev.tuskillgt.ui.about.AboutViewModel
 import com.techun.dev.tuskillgt.ui.competencies.CompetenciesViewModel
 import com.techun.dev.tuskillgt.ui.contact.ContactViewModel
@@ -54,7 +55,8 @@ val appDomainModule = module {
     factoryOf(::CompetenciesDataUseCase)
     factoryOf(::ContactDataUseCase)
     factoryOf(::InitializeDefaultUserUseCase)
-    factoryOf(::AuthUseCase)
+    factoryOf(::LoginUseCase)
+    factoryOf(::LogoutUseCase)
     factoryOf(::GetSplashDestinationUseCase)
 }
 
