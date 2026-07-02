@@ -7,6 +7,7 @@ sealed class NavRoutes : NavKey {
     @Serializable
     data object Login : NavRoutes()
 
+    @Serializable data object Main : NavRoutes()
     @Serializable
     data object Home : NavRoutes()
 

@@ -4,13 +4,14 @@ import androidx.room.Room
 import com.techun.dev.tuskillgt.data.local.database.AuthDatabase
 import com.techun.dev.tuskillgt.data.local.preferences.AppPreferencesDataSource
 import com.techun.dev.tuskillgt.data.repository.MockAppRepositoryImpl
-import com.techun.dev.tuskillgt.data.repository.RoomRepositoryImpl
+import com.techun.dev.tuskillgt.data.repository.AuthRepositoryImpl
 import com.techun.dev.tuskillgt.domain.repository.MockAppRepository
-import com.techun.dev.tuskillgt.domain.repository.RoomRepository
+import com.techun.dev.tuskillgt.domain.repository.AuthRepository
 import com.techun.dev.tuskillgt.domain.usecase.AboutUsUseCase
 import com.techun.dev.tuskillgt.domain.usecase.AuthUseCase
 import com.techun.dev.tuskillgt.domain.usecase.CompetenciesDataUseCase
 import com.techun.dev.tuskillgt.domain.usecase.ContactDataUseCase
+import com.techun.dev.tuskillgt.domain.usecase.GetSplashDestinationUseCase
 import com.techun.dev.tuskillgt.domain.usecase.HomeDataUseCase
 import com.techun.dev.tuskillgt.domain.usecase.InitializeDefaultUserUseCase
 import com.techun.dev.tuskillgt.ui.about.AboutViewModel
@@ -18,6 +19,7 @@ import com.techun.dev.tuskillgt.ui.competencies.CompetenciesViewModel
 import com.techun.dev.tuskillgt.ui.contact.ContactViewModel
 import com.techun.dev.tuskillgt.ui.home.HomeViewModel
 import com.techun.dev.tuskillgt.ui.login.LoginViewModel
+import com.techun.dev.tuskillgt.ui.splash.SplashViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.factoryOf
@@ -43,7 +45,7 @@ val dataStoreModule = module {
 
 val appDataModule = module {
     singleOf(::MockAppRepositoryImpl) { bind<MockAppRepository>() }
-    singleOf(::RoomRepositoryImpl) { bind<RoomRepository>() }
+    singleOf(::AuthRepositoryImpl) { bind<AuthRepository>() }
 }
 
 val appDomainModule = module {
@@ -53,6 +55,7 @@ val appDomainModule = module {
     factoryOf(::ContactDataUseCase)
     factoryOf(::InitializeDefaultUserUseCase)
     factoryOf(::AuthUseCase)
+    factoryOf(::GetSplashDestinationUseCase)
 }
 
 val appUiModule = module {
@@ -61,4 +64,5 @@ val appUiModule = module {
     viewModelOf(::CompetenciesViewModel)
     viewModelOf(::ContactViewModel)
     viewModelOf(::LoginViewModel)
+    viewModelOf(::SplashViewModel)
 }
