@@ -472,3 +472,146 @@ val imagesmode: ImageVector
     }
 
 private var _imagesmode: ImageVector? = null
+
+@Suppress("CheckReturnValue")
+val password_2: ImageVector
+    get() {
+        if (_password_2 != null) {
+            return _password_2!!
+        }
+        _password_2 =
+            ImageVector.Builder(
+                name = "password_2",
+                defaultWidth = 24.dp,
+                defaultHeight = 24.dp,
+                viewportWidth = 24f,
+                viewportHeight = 24f,
+            )
+                .apply {
+                    path(
+                        fill = SolidColor(Color.Black),
+                        fillAlpha = 1f,
+                        stroke = null,
+                        strokeAlpha = 1f,
+                        strokeLineWidth = 1f,
+                        strokeLineCap = StrokeCap.Butt,
+                        strokeLineJoin = StrokeJoin.Bevel,
+                        strokeLineMiter = 1f,
+                        pathFillType = PathFillType.NonZero,
+                    ) {
+                        moveTo(4f, 13f)
+                        quadTo(2.75f, 13f, 1.88f, 12.13f)
+                        reflectiveQuadTo(1f, 10f)
+                        reflectiveQuadTo(1.88f, 7.88f)
+                        reflectiveQuadTo(4f, 7f)
+                        reflectiveQuadTo(6.13f, 7.88f)
+                        reflectiveQuadTo(7f, 10f)
+                        reflectiveQuadTo(6.13f, 12.13f)
+                        reflectiveQuadTo(4f, 13f)
+                        close()
+                        moveTo(2f, 19f)
+                        verticalLineTo(17f)
+                        horizontalLineTo(22f)
+                        verticalLineToRelative(2f)
+                        horizontalLineTo(2f)
+                        close()
+                        moveTo(9.88f, 12.13f)
+                        quadTo(9f, 11.25f, 9f, 10f)
+                        reflectiveQuadTo(9.88f, 7.88f)
+                        reflectiveQuadTo(12f, 7f)
+                        reflectiveQuadToRelative(2.13f, 0.88f)
+                        reflectiveQuadTo(15f, 10f)
+                        reflectiveQuadToRelative(-0.88f, 2.13f)
+                        reflectiveQuadTo(12f, 13f)
+                        reflectiveQuadTo(9.88f, 12.13f)
+                        close()
+                        moveToRelative(8f, 0f)
+                        quadTo(17f, 11.25f, 17f, 10f)
+                        reflectiveQuadTo(17.88f, 7.88f)
+                        reflectiveQuadTo(20f, 7f)
+                        reflectiveQuadToRelative(2.13f, 0.88f)
+                        reflectiveQuadTo(23f, 10f)
+                        reflectiveQuadToRelative(-0.88f, 2.13f)
+                        reflectiveQuadTo(20f, 13f)
+                        reflectiveQuadTo(17.88f, 12.13f)
+                        close()
+                    }
+                }
+                .build()
+        return _password_2!!
+    }
+
+private var _password_2: ImageVector? = null
+
+@Suppress("CheckReturnValue")
+val password_2_off: ImageVector
+    get() {
+        if (_password_2_off != null) {
+            return _password_2_off!!
+        }
+        _password_2_off =
+            ImageVector.Builder(
+                name = "password_2_off",
+                defaultWidth = 24.dp,
+                defaultHeight = 24.dp,
+                viewportWidth = 24f,
+                viewportHeight = 24f,
+            )
+                .apply {
+                    path(
+                        fill = SolidColor(Color.Black),
+                        fillAlpha = 1f,
+                        stroke = null,
+                        strokeAlpha = 1f,
+                        strokeLineWidth = 1f,
+                        strokeLineCap = StrokeCap.Butt,
+                        strokeLineJoin = StrokeJoin.Bevel,
+                        strokeLineMiter = 1f,
+                        pathFillType = PathFillType.NonZero,
+                    ) {
+                        moveTo(4f, 13f)
+                        quadTo(2.75f, 13f, 1.88f, 12.13f)
+                        reflectiveQuadTo(1f, 10f)
+                        reflectiveQuadTo(1.88f, 7.88f)
+                        reflectiveQuadTo(4f, 7f)
+                        reflectiveQuadTo(6.13f, 7.88f)
+                        reflectiveQuadTo(7f, 10f)
+                        reflectiveQuadTo(6.13f, 12.13f)
+                        reflectiveQuadTo(4f, 13f)
+                        close()
+                        moveTo(17.88f, 12.13f)
+                        quadTo(17f, 11.25f, 17f, 10f)
+                        reflectiveQuadTo(17.88f, 7.88f)
+                        reflectiveQuadTo(20f, 7f)
+                        reflectiveQuadToRelative(2.13f, 0.88f)
+                        reflectiveQuadTo(23f, 10f)
+                        reflectiveQuadToRelative(-0.88f, 2.13f)
+                        reflectiveQuadTo(20f, 13f)
+                        reflectiveQuadTo(17.88f, 12.13f)
+                        close()
+                        moveTo(14.5f, 11.65f)
+                        lineTo(10.35f, 7.5f)
+                        quadTo(10.7f, 7.25f, 11.13f, 7.13f)
+                        reflectiveQuadTo(12f, 7f)
+                        quadToRelative(1.25f, 0f, 2.13f, 0.88f)
+                        reflectiveQuadTo(15f, 10f)
+                        quadToRelative(0f, 0.45f, -0.13f, 0.88f)
+                        reflectiveQuadTo(14.5f, 11.65f)
+                        close()
+                        moveTo(19.8f, 22.6f)
+                        lineTo(16.2f, 19f)
+                        horizontalLineTo(2f)
+                        verticalLineTo(17f)
+                        horizontalLineTo(14.2f)
+                        lineTo(1.4f, 4.2f)
+                        lineTo(2.8f, 2.8f)
+                        lineTo(21.2f, 21.2f)
+                        lineToRelative(-1.4f, 1.4f)
+                        close()
+                    }
+                }
+                .build()
+        return _password_2_off!!
+    }
+
+private var _password_2_off: ImageVector? = null

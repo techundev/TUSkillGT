@@ -2,18 +2,13 @@ package com.techun.dev.tuskillgt.ui.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -26,22 +21,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.techun.dev.tuskillgt.R
+import com.techun.dev.tuskillgt.core.composables.TUSkillGTButton
 import com.techun.dev.tuskillgt.core.composables.TUSkillGTText
 import com.techun.dev.tuskillgt.ui.login.composables.TUSkillGTPasswordField
 import com.techun.dev.tuskillgt.ui.login.composables.TUSkillGTTextField
 import org.koin.compose.viewmodel.koinViewModel
-
-@Preview(showBackground = true)
-@Composable
-fun LoginScreenPreview() {
-    LoginContent()
-}
 
 @Composable
 fun LoginScreen(
@@ -54,42 +44,40 @@ fun LoginScreen(
     val snackbarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(uiState) {
-        if (uiState is LoginUiState.Success) {
-            onLoginSuccess()
-        }
-        if (uiState is LoginUiState.Error) {
-            snackbarHostState.showSnackbar((uiState as LoginUiState.Error).message)
+        when (val state = uiState) {
+            is LoginUiState.Success -> onLoginSuccess()
+            is LoginUiState.Error -> snackbarHostState.showSnackbar(state.message)
+            else -> Unit
         }
     }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) }
-    ) { innerPadding ->
-        Box(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-
-
-//            when (val state = uiState) {
-//                is LoginUiState.Error -> TUSkillGTErrorScreen(message = state.message)
-//                is LoginUiState.Idle -> {}
-//                is LoginUiState.Loading -> TUSkillGTLoadingScreen()
-//                is LoginUiState.Success -> {}
-//            }
-        }
+    ) { paddingValues ->
+        LoginContent(
+            modifier = Modifier.padding(paddingValues),
+            uiState = uiState,
+            user = user,
+            onUserChange = { user = it },
+            password = password,
+            onPasswordChange = { password = it },
+            onLoginClick = { viewModel.login(user, password) }
+        )
     }
 }
 
 @Composable
-fun LoginContent() {
-    var user by rememberSaveable { mutableStateOf("") }
-    var password by rememberSaveable { mutableStateOf("") }
-
+fun LoginContent(
+    uiState: LoginUiState,
+    user: String,
+    onUserChange: (String) -> Unit,
+    password: String,
+    onPasswordChange: (String) -> Unit,
+    onLoginClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(horizontal = 24.dp),
         verticalArrangement = Arrangement.Center,
@@ -104,9 +92,22 @@ fun LoginContent() {
             contentScale = ContentScale.Fit
         )
 
+        TUSkillGTText(
+            text = "Inicio de sesión",
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+        TUSkillGTText(
+            text = "Ingresar para conocer SkillGT",
+            color = MaterialTheme.colorScheme.secondary
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         TUSkillGTTextField(
             value = user,
-            onValueChange = { user = it },
+            onValueChange = onUserChange,
             label = "Usuario",
             singleLine = true,
             modifier = Modifier
@@ -116,29 +117,25 @@ fun LoginContent() {
 
         TUSkillGTPasswordField(
             value = password,
-            onValueChange = { password = it },
+            onValueChange = onPasswordChange,
             label = "Contraseña",
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 24.dp)
         )
 
-//        Button(
-//            onClick = { onLoginClick(user, password) },
-//            enabled = uiState !is LoginUiState.Loading,
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .height(48.dp)
-//        ) {
-//            if (uiState is LoginUiState.Loading) {
-//                CircularProgressIndicator(
-//                    modifier = Modifier.size(20.dp),
-//                    strokeWidth = 2.dp,
-//                    color = MaterialTheme.colorScheme.onPrimary
-//                )
-//            } else {
-//                TUSkillGTText("Ingresar")
-//            }
-//        }
+        TUSkillGTButton(
+            onclick = onLoginClick,
+            text = "Ingresar",
+            shape = MaterialTheme.shapes.small,
+            enabled = uiState !is LoginUiState.Loading
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        TUSkillGTText(
+            text = "Usuario: admin | Contraseña: 1234",
+            color = Color.Gray
+        )
     }
 }
