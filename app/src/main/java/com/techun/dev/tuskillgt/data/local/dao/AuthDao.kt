@@ -7,10 +7,10 @@ import androidx.room.Query
 import com.techun.dev.tuskillgt.data.local.entity.UserEntity
 
 @Dao
-interface UserDao {
+interface AuthDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: UserEntity)
 
-    @Query("SELECT EXISTS(SELECT 1 FROM Users WHERE user = :user AND password = :password)")
+    @Query("SELECT * FROM Users WHERE user = :user AND password = :password LIMIT 1")
     suspend fun doLogin(user: String, password: String): UserEntity?
 }

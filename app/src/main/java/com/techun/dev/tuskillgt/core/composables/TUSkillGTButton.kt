@@ -49,7 +49,7 @@ fun TUSkillGTButton(
         TUSkillGTText(
             text = text.uppercase(),
             modifier = Modifier.padding(vertical = 8.dp),
-            style = MaterialTheme.typography.titleMedium,
+            style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.surface,
             fontWeight = FontWeight.Bold
         )

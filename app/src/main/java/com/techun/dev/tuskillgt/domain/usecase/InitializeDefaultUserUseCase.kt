@@ -5,8 +5,8 @@ import kotlinx.coroutines.flow.first
 
 class InitializeDefaultUserUseCase(private val roomRepository: RoomRepository) {
     companion object {
-        private const val DEFAULT_USER = "asantos"
-        private const val DEFAULT_PASSWORD = "1234567890"
+        private const val DEFAULT_USER = "admin"
+        private const val DEFAULT_PASSWORD = "1234"
     }
 
     suspend operator fun invoke() {

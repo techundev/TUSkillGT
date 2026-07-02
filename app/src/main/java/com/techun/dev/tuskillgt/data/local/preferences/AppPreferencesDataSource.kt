@@ -19,6 +19,8 @@ class AppPreferencesDataSource(
 ) {
     private object Keys {
         val KEY_FIRST_LAUNCH = booleanPreferencesKey("is_first_launch")
+        val KEY_IS_AUTHENTICATED = booleanPreferencesKey("is_authenticated")
+
     }
 
     val isFirstLaunch: Flow<Boolean> = context.dataStore.data
@@ -27,6 +29,15 @@ class AppPreferencesDataSource(
     suspend fun setFirstLaunchCompleted() {
         context.dataStore.edit { pref ->
             pref[KEY_FIRST_LAUNCH] = false
+        }
+    }
+
+    val isAuthenticated: Flow<Boolean> = context.dataStore.data
+        .map { prefs -> prefs[Keys.KEY_IS_AUTHENTICATED] ?: false }
+
+    suspend fun setAuthenticated(isAuthenticated: Boolean) {
+        context.dataStore.edit { prefs ->
+            prefs[Keys.KEY_IS_AUTHENTICATED] = isAuthenticated
         }
     }
 }

@@ -1,9 +1,6 @@
 package com.techun.dev.tuskillgt.ui.login.composables
 
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -20,7 +17,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import com.techun.dev.tuskillgt.R
 import com.techun.dev.tuskillgt.core.composables.TUSkillGTText
 import com.techun.dev.tuskillgt.core.utils.password_2
 import com.techun.dev.tuskillgt.core.utils.password_2_off
@@ -51,8 +47,7 @@ fun TUSkillGTPasswordField(
         },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
-//            val icon = if (passwordVisible) Icons.Filled.VisibilityOff else Icons.Default.Visibility
-            val icon = if (passwordVisible) password_2_off else password_2
+            val icon = if (passwordVisible) password_2 else password_2_off
             val description = if (passwordVisible) "Ocultar contraseña" else "Mostrar contraseña"
             IconButton(onClick = { passwordVisible = !passwordVisible }) {
                 Icon(imageVector = icon, contentDescription = description)

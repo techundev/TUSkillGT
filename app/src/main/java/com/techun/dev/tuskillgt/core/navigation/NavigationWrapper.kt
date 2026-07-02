@@ -7,10 +7,12 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.techun.dev.tuskillgt.core.utils.back
+import com.techun.dev.tuskillgt.core.utils.navigateAndClear
 import com.techun.dev.tuskillgt.ui.about.AboutScreen
 import com.techun.dev.tuskillgt.ui.competencies.CompetenciesScreen
 import com.techun.dev.tuskillgt.ui.contact.ContactScreen
 import com.techun.dev.tuskillgt.ui.home.HomeScreen
+import com.techun.dev.tuskillgt.ui.login.LoginScreen
 
 @Composable
 fun NavigationWrapper(
@@ -24,6 +26,11 @@ fun NavigationWrapper(
             backStack.back()
         },
         entryProvider = entryProvider {
+            entry<NavRoutes.Login> {
+                LoginScreen(onLoginSuccess = {
+                    backStack.navigateAndClear(NavRoutes.Home)
+                })
+            }
             entry<NavRoutes.Home> {
                 HomeScreen()
             }

@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -22,11 +21,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.techun.dev.tuskillgt.R
-import com.techun.dev.tuskillgt.core.composables.TUSkillGTButton
-import com.techun.dev.tuskillgt.core.composables.TUSkillGTText
-import com.techun.dev.tuskillgt.domain.model.HomeData
 import com.techun.dev.tuskillgt.core.composables.TUSkillGTErrorScreen
 import com.techun.dev.tuskillgt.core.composables.TUSkillGTLoadingScreen
+import com.techun.dev.tuskillgt.core.composables.TUSkillGTText
+import com.techun.dev.tuskillgt.domain.model.HomeData
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -81,6 +79,5 @@ private fun HomeContent(data: HomeData) {
             color = MaterialTheme.colorScheme.primary
         )
         Spacer(modifier = Modifier.height(30.dp))
-        TUSkillGTButton(onclick = {}, text = "Ingresar", shape = MaterialTheme.shapes.small)
     }
 }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.techun.dev.tuskillgt.ui.login.LoginScreen
 import com.techun.dev.tuskillgt.ui.main.MainScreen
 import com.techun.dev.tuskillgt.ui.theme.TUSkillGTTheme
 
@@ -14,8 +13,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TUSkillGTTheme {
-                LoginScreen { }
-//                MainScreen()
+//                LoginScreen { }
+                MainScreen()
             }
         }
     }
